@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Changing Effect</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="img-box">
+            <img src="./transparent.png" alt="RR Logo" width="100%">
+
+            <div class="img-wrap">
+                <img id="originalImg" src="./backgrounded.png" alt="RR Transparent Logo">
+            </div>
+
+            <span id="line">
+                <img src="./cursor-resize-ew.webp" alt="Resize Cursor">
+            </span>
+        </div>
+    </div>
+
+    <script>
+        const imgBox = document.querySelector('.img-box');
+        const imgWrap = document.querySelector('.img-wrap');
+        const originalImg = document.querySelector('#originalImg');
+        const line = document.querySelector('#line');
+
+        originalImg.style.width = imgBox.style.width;
+
+        const leftSpace = imgBox.offsetLeft;
+        imgBox.onmousemove = function (e) {
+            const boxWidth = (e.pageX - leftSpace) + "px";
+            imgWrap.style.width = boxWidth;
+            line.style.left = boxWidth;
+        }
+    </script>
+</body>
+
+</html>
